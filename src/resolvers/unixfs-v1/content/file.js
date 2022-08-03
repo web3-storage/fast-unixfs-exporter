@@ -146,7 +146,6 @@ async function * emitAllBytes (blockstore, node, streamPosition = 0, options) {
   })()
 
   let i = 0
-  // @ts-ignore https://github.com/achingbrain/it/pull/24
   for await (const block of blocks) {
     const childLink = node.Links[i]
     const childEnd = streamPosition + file.blockSizes[i]
