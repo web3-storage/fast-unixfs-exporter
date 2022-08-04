@@ -17,9 +17,20 @@ const directoryContent = (cid, node, unixfs, path, resolve, depth, blockstore) =
     const length = options.length || node.Links.length
     const links = node.Links.slice(offset, length)
 
-    for (const link of links) {
-      const result = await resolve(link.Hash, link.Name || '', `${path}/${link.Name || ''}`, [], depth + 1, blockstore, options)
+    const results = (async function * () {
+      const resultPromises = links.map(l => (
+        resolve(l.Hash, l.Name || '', `${path}/${l.Name || ''}`, [], depth + 1, blockstore, options)
+          .then(result => ({ result }))
+          .catch(error => ({ error }))
+      ))
+      for (const promise of resultPromises) {
+        const res = await promise
+        if ('error' in res) throw res.error
+        yield res.result
+      }
+    })()
 
+    for await (const result of results) {
       if (result.entry) {
         yield result.entry
       }
