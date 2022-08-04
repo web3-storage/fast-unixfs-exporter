@@ -1,6 +1,6 @@
 {
   "name": "@web3-storage/fast-unixfs-exporter",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "JavaScript implementation of the UnixFS exporter used by IPFS",
   "license": "Apache-2.0 OR MIT",
   "homepage": "https://github.com/web3-storage/fast-unixfs-exporter#readme",
