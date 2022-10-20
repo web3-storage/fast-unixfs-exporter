@@ -23,7 +23,9 @@ const directoryContent = (cid, node, unixfs, path, resolve, depth, blockstore) =
           .then(result => ({ result }))
           .catch(error => ({ error }))
       ))
-      for (const promise of resultPromises) {
+      while (true) {
+        const promise = resultPromises.shift()
+        if (!promise) return
         const res = await promise
         if ('error' in res) throw res.error
         yield res.result
