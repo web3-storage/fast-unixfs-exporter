@@ -4,7 +4,6 @@ yarn.lock
 **/*.log
 test/repo-tests*
 **/bundle.js
-package-lock.json
 tsconfig-types.aegir.json
 
 # Logs
