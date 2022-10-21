@@ -138,7 +138,9 @@ async function * emitAllBytes (blockstore, node, streamPosition = 0, options) {
         .then(block => ({ block }))
         .catch(error => ({ error }))
     ))
-    for (const promise of blockPromises) {
+    while (true) {
+      const promise = blockPromises.shift()
+      if (!promise) return
       const res = await promise
       if ('error' in res) throw res.error
       yield res.block
