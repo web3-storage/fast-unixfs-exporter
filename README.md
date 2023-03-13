@@ -1,3 +1,12 @@
+# ⚠️ Deprecated - use [npm.im/ipfs-unixfs-exporter](https://npm.im/ipfs-unixfs-exporter).
+
+This fork provided parallel fetching of blocks, but this feature has been merged upstream in the following PRs:
+
+* https://github.com/ipfs/js-ipfs-unixfs/pull/249
+* https://github.com/ipfs/js-ipfs-unixfs/pull/286
+
+---
+
 # fast-unixfs-exporter
 
 Exports UnixFS and other DAGs from IPFS...but quickly.
